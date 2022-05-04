@@ -7,14 +7,51 @@
     <title>Filters</title>
   </head>
   <body>
-    <button @click="addFilter" type="button">Add Filter</button>
-    <div class="filters">
-        <label for="filters">Choose a filter: </label>
-        <select name="filters">
-            <option v-for="filter in filters">{{filter.name}}</option>
-        </select>
+    <div style="text-align: center;">
+        <button @click="addFilterModal" type="button" class="btn-primary">Add Filter (Modal)</button>
+        <button @click="addFilterNonModal" type="button" class="btn-primary">Add filter (Non-Modal)</button>
+        <div class="filters">
+            <label for="filters">Choose a filter: </label>
+            <select name="filters">
+                <option v-for="filter in filters">{{filter.name}}</option>
+            </select>
+        </div>
     </div>
-    <p class="suvaline">eae</p>
+
+    <div id="addFilterNonModal" style="display: none;">
+        <div class="row">
+            <h5 class="col-2 offset-2">Filter Name</h5>
+            <input class="col-2" type="text" id="filterName" name="filterName">
+        </div>
+        <br>
+        <div id="filterCriteriaNonModal">
+            <div class="row">
+                <h5 class="col-1 offset-2">Criteria</h5>
+                <select class="col-2" id="filterTypeNonModal">
+                    <option value="Amount">Amount</option>
+                    <option value="Title">Title</option>
+                    <option value="Date">Date</option>
+                </select>
+                <select class="col-2" name="moreLessEqual">
+                    <option value="More">More</option>
+                    <option value="Less">Less</option>
+                    <option value="Equal">Equal</option>
+                </select>
+                <input class="col-2" type="number" name="quantity">
+                <button class="col-1">-</button>
+            </div>
+        </div>
+        <br>
+        <div class="row justify-content-md-center">
+            <button @click="addNonModalRow" type="button" class="btn btn-primary col-md-auto">Add row</button>
+        </div>
+        <br>
+        <div class="row justify-content-md-center">
+            <button @click="closeNonModal" type="button" class="btn btn-primary col-md-auto">Close</button>
+            <button @click="saveNonModal" type="button" class="btn btn-primary col-md-auto">Save</button>
+        </div>
+    </div>
+
     <div id="addFilterModal" class="modal" tabindex="-1">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
@@ -26,20 +63,20 @@
                     <div class="row">
                         <h5 class="col-2">Filter Name</h5>
                         <input class="col-3" type="text" id="filterName" name="filterName">
-                    <div>
+                    </div>
                     <br>
-                    <div id="filterCriteria">
+                    <div id="filterCriteriaModal">
                         <div class="row">
                             <h5 class="col-2">Criteria</h5>
-                            <select class="col-3 filterType">
-                                <option>Amount</option>
-                                <option>Title</option>
-                                <option>Date</option>
+                            <select class="col-3" id="filterTypeModal">
+                                <option value="Amount">Amount</option>
+                                <option value="Title">Title</option>
+                                <option value="Date">Date</option>
                             </select>
                             <select class="col-3" name="moreLessEqual">
-                                <option>More</option>
-                                <option>Less</option>
-                                <option>Equal</option>
+                                <option value="More">More</option>
+                                <option value="Less">Less</option>
+                                <option value="Equal">Equal</option>
                             </select>
                             <input class="col-3" type="number" name="quantity">
                             <button class="col-1">-</button>
@@ -53,7 +90,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Save</button>
+                    <button @click="saveModal" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Save</button>
                 </div>
             </div>
         </div>
@@ -61,5 +98,6 @@
     <script src="https://unpkg.com/vue@3.2.31/dist/vue.global.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 	<script src="restClient.js"></script>
+    <script src="filterType.js"></script>
   </body>
 </html>
