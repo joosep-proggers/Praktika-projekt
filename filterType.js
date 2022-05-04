@@ -10,11 +10,12 @@ document.addEventListener('change',(e) => {
         while(parent.lastChild.id != "filterTypeModal" && parent.lastChild.id != "filterTypeNonModal"){
             parent.removeChild(parent.lastChild)
         }
-        var deleteRowButton = document.createElement("button")
-            deleteRowButton.textContent = "-"
-            deleteRowButton.className = "col-1"
-            deleteRowButton.id = "deleteRowButton"
 
+        var deleteRowButton = document.createElement("button")
+        deleteRowButton.textContent = "-"
+        deleteRowButton.className = "col-1"
+        deleteRowButton.id = "deleteRowButton"
+        
         if(e.target.value == "Amount"){
             var moreLessEqual = document.createElement("select")
             moreLessEqual.className ="col-2"
@@ -32,7 +33,9 @@ document.addEventListener('change',(e) => {
 
             parent.appendChild(moreLessEqual)
             parent.appendChild(amount)
-            parent.append(deleteRowButton)
+            if(parent.firstChild.tagName != "H5"){
+                parent.append(deleteRowButton)
+            }
 
           } else if (e.target.value == "Title"){
             var startsHasEnds = document.createElement("select")
@@ -51,7 +54,9 @@ document.addEventListener('change',(e) => {
 
             parent.appendChild(startsHasEnds)
             parent.appendChild(text)
-            parent.append(deleteRowButton)
+            if(parent.firstChild.tagName != "H5"){
+                parent.append(deleteRowButton)
+            }
 
           } else if (e.target.value == "Date"){
             var fromDuringBefore = document.createElement("select")
@@ -70,7 +75,9 @@ document.addEventListener('change',(e) => {
 
             parent.appendChild(fromDuringBefore)
             parent.appendChild(date)
-            parent.append(deleteRowButton)
+            if(parent.firstChild.tagName != "H5"){
+                parent.append(deleteRowButton)
+            }
           }
      }
  });
