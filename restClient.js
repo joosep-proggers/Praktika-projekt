@@ -55,6 +55,7 @@ const vue = Vue.createApp({
             var deleteRowButton = document.createElement("button")
             deleteRowButton.textContent = "-"
             deleteRowButton.className = "col-1"
+            deleteRowButton.id = "deleteRowButton"
 
             div.appendChild(filter)
             div.appendChild(moreLessEqual)
@@ -90,6 +91,7 @@ const vue = Vue.createApp({
             var deleteRowButton = document.createElement("button")
             deleteRowButton.textContent = "-"
             deleteRowButton.className = "col-1"
+            deleteRowButton.id = "deleteRowButton"
 
             div.appendChild(filter)
             div.appendChild(moreLessEqual)

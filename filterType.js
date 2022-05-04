@@ -13,6 +13,7 @@ document.addEventListener('change',(e) => {
         var deleteRowButton = document.createElement("button")
             deleteRowButton.textContent = "-"
             deleteRowButton.className = "col-1"
+            deleteRowButton.id = "deleteRowButton"
 
         if(e.target.value == "Amount"){
             var moreLessEqual = document.createElement("select")
