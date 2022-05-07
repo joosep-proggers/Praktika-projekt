@@ -1,16 +1,17 @@
 const vue = Vue.createApp({
     data() {
         return {
-            filters: [
-                { name: "ball", id: 1},
-                { name: "scratch", id: 2},
-                { name: "bruh", id: 3}
-            ]
+            filters: []
         }
     },
-    /*async created(){
-        this.filters = await ()         saab api kaudu andmebaasist varasemad filtrid ja lisab menüüsse
-    }*/
+    async created(){
+
+        let apiURL = "http://localhost:8080/filters"
+
+        this.filters = await (await fetch(apiURL)).json()
+
+        console.log(this.filters)
+    },
     methods: {
         addFilterModal: function(){
             const addFilterNonModal = document.getElementById("addFilterNonModal")
